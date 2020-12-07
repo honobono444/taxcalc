@@ -1,1 +1,79 @@
+<html>
+<head>
+<script type="text/javascript">
+  var par8 = 8/108;
+  var par10 = 10/110;
+  function calc(){
+    var komiObj = document.getElementById("komi");
+    var komi = komiObj.value;
+    document.getElementById("nyukomi").innerHTML = komi;
+    var zeiObj = document.getElementById("zei");
+    var zei = zeiObj.value;
+    document.getElementById("nyuzei").innerHTML = zei;
+    var kensa = zei/komi;
+    console.log("komi="+komi);
+    console.log("zei="+zei);
 
+    if (par8 == kensa) {
+      console.log("8%です");
+      document.getElementById("kekka8").innerHTML = zei;
+      document.getElementById("kekka10").innerHTML = "なし";
+    }else if (par10 == kensa) {
+      console.log("10%です");
+      document.getElementById("kekka8").innerHTML = "なし";
+      document.getElementById("kekka10").innerHTML = zei;
+    } else {
+
+    }
+  }
+</script>
+</head>
+<body>
+<table>
+  <tr>
+    <td>税込み金額 </td>
+    <td><input type="text" id="komi" name="komi" value="42504"></td>
+  </tr>
+  <tr>
+    <td>税</td>
+    <td><input type="text" id="zei" name="zei" value="3864"></td>
+  </tr>
+  <tr>
+    <td>　</td>
+    <td><input type="button" id="calbtn" name="calbtn" onclick="javascript:calc();" value="計算"></td>
+  </tr>
+</table>
+<table id="kekkatbl" border="1,1,1,1">
+  <tr>
+    <td align="center" colspan="2">入力値</td>
+  </tr>
+  <tr>
+    <td width="100">税込み金額</td>
+    <td width="100" id="nyukomi"></td>
+  </tr>
+  <tr>
+    <td>税</td>
+    <td id="nyuzei"></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2">結果</td>
+  </tr>
+  <tr>
+    <td>8%対象</td>
+    <td id="kekkakomi8"></td>
+  </tr>
+  <tr>
+    <td>8%消費税</td>
+    <td id="kekkazei8"></td>
+  </tr>
+  <tr>
+    <td>10%対象</td>
+    <td id="kekkakomi10"></td>
+  </tr>
+  <tr>
+    <td>10%消費税</td>
+    <td id="kekkazei10"></td>
+  </tr>
+</table>
+</body>
+</html>
