@@ -29,14 +29,14 @@
     } else {
       var komi8 = komi * 5.4 - zei * 59.4;
       var komi10 = komi - komi8;
-      var zei8 = komi8 * 8 / 108;
-      var zei10 = komi10 * 10 / 110;
+      var zei8 = komi8 * par8;
+      var zei10 = komi10 * par10;
       document.getElementById("kekkazei8").innerHTML = Math.round(zei8);
       document.getElementById("kekkazei10").innerHTML = Math.round(zei10);
       document.getElementById("kekkakomi8").innerHTML = Math.round(komi8);
       document.getElementById("kekkakomi10").innerHTML = Math.round(komi10);
       
-      kenzankomi = Math.round(zei8) + Math.round(zei10) + Math.round(komi8) + Math.round(komi10);
+      kenzankomi = Math.round(komi8) + Math.round(komi10);
       kenzanzei = Math.round(zei8) + Math.round(zei10);
       document.getElementById("kenzankomi").innerHTML = kenzankomi;
       document.getElementById("kenzanzei").innerHTML = kenzanzei;
