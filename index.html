@@ -27,7 +27,14 @@
       document.getElementById("kekkakomi8").innerHTML = "なし";
       document.getElementById("kekkakomi10").innerHTML = komi;
     } else {
-
+      var komi8 = komi * 5.4 - zei * 59.4;
+      var komi10 = komi - komi8;
+      var zei8 = komi8 * par8;
+      var zei10 = taisho10 * par10;
+      document.getElementById("kekkazei8").innerHTML = zei8;
+      document.getElementById("kekkazei10").innerHTML = zei10;
+      document.getElementById("kekkakomi8").innerHTML = komi8;
+      document.getElementById("kekkakomi10").innerHTML = komi10;
     }
   }
 </script>
@@ -36,11 +43,11 @@
 <table>
   <tr>
     <td>税込み金額 </td>
-    <td><input type="text" id="komi" name="komi" value="42504"></td>
+    <td><input type="text" id="komi" name="komi" value="10920"></td>
   </tr>
   <tr>
     <td>税</td>
-    <td><input type="text" id="zei" name="zei" value="3864"></td>
+    <td><input type="text" id="zei" name="zei" value="920"></td>
   </tr>
   <tr>
     <td>　</td>
