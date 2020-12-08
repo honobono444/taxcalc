@@ -7,19 +7,117 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script type="text/javascript">
+  var par8 = 8/108;
+  var par10 = 10/110;
+  function calc(){
+    var komiObj = document.getElementById("komi");
+    var komi = komiObj.value;
+    document.getElementById("nyukomi").innerHTML = komi;
+    var zeiObj = document.getElementById("zei");
+    var zei = zeiObj.value;
+    document.getElementById("nyuzei").innerHTML = zei;
+    var kensa = zei/komi;
+    console.log("komi="+komi);
+    console.log("zei="+zei);
 
+    if (par8 == kensa) {
+      console.log("8%です");
+      document.getElementById("kekkazei8").innerHTML = zei;
+      document.getElementById("kekkazei10").innerHTML = "なし";
+      document.getElementById("kekkakomi8").innerHTML = komi;
+      document.getElementById("kekkakomi10").innerHTML = "なし";
+    }else if (par10 == kensa) {
+      console.log("10%です");
+      document.getElementById("kekkazei8").innerHTML = "なし";
+      document.getElementById("kekkazei10").innerHTML = zei;
+      document.getElementById("kekkakomi8").innerHTML = "なし";
+      document.getElementById("kekkakomi10").innerHTML = komi;
+    } else {
+      var komi8 = komi * 5.4 - zei * 59.4;
+      var komi10 = komi - komi8;
+      var zei8 = komi8 * par8;
+      var zei10 = komi10 * par10;
+      document.getElementById("kekkazei8").innerHTML = Math.round(zei8);
+      document.getElementById("kekkazei10").innerHTML = Math.round(zei10);
+      document.getElementById("kekkakomi8").innerHTML = Math.round(komi8);
+      document.getElementById("kekkakomi10").innerHTML = Math.round(komi10);
+      
+      kenzankomi = Math.round(komi8) + Math.round(komi10);
+      kenzanzei = Math.round(zei8) + Math.round(zei10);
+      document.getElementById("kenzankomi").innerHTML = kenzankomi;
+      document.getElementById("kenzanzei").innerHTML = kenzanzei;
+    }
+  }
+</script>
     <title>Hello, world!</title>
   </head>
   <body>
-    <header style="background-color:gray">Header</header>
+    <header style="background-color:gray">calc</header>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-2" style="background-color:red;">Red</div>
-        <div class="col-sm-8" style="background-color:blue;">Blue</div>
-        <div class="col-sm-2" style="background-color:yellow;">Yellow</div>
+        <div class="col-sm-12">
+          <table>
+            <tr>
+              <td>税込み金額 </td>
+              <td><input type="text" id="komi" name="komi" value="10920"></td>
+            </tr>
+            <tr>
+              <td>税</td>
+              <td><input type="text" id="zei" name="zei" value="920"></td>
+            </tr>
+            <tr>
+              <td>　</td>
+              <td><input type="button" id="calbtn" name="calbtn" onclick="javascript:calc();" value="計算"></td>
+            </tr>
+          </table>
+          <table id="kekkatbl" border="1,1,1,1">
+            <tr>
+              <td align="center" colspan="2">入力値</td>
+            </tr>
+            <tr>
+              <td width="100">税込み金額</td>
+              <td width="100" id="nyukomi"></td>
+            </tr>
+            <tr>
+              <td>税</td>
+              <td id="nyuzei"></td>
+            </tr>
+            <tr>
+              <td align="center" colspan="2">結果</td>
+            </tr>
+            <tr>
+              <td>8%対象</td>
+              <td id="kekkakomi8"></td>
+            </tr>
+            <tr>
+              <td>8%消費税</td>
+              <td id="kekkazei8"></td>
+            </tr>
+            <tr>
+              <td>10%対象</td>
+              <td id="kekkakomi10"></td>
+            </tr>
+            <tr>
+              <td>10%消費税</td>
+              <td id="kekkazei10"></td>
+            </tr>
+            <tr>
+              <td align="center" colspan="2">検算</td>
+            </tr>
+            <tr>
+              <td width="100">税込み金額</td>
+              <td width="100" id="kenzankomi"></td>
+            </tr>
+            <tr>
+              <td>税</td>
+              <td id="kenzanzei"></td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
-    <footer style="background-color:gray">Footer</footer>
+    <footer>calc</footer>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
