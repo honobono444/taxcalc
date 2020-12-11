@@ -31,12 +31,16 @@
       document.getElementById("kekkazei10").innerHTML = "なし";
       document.getElementById("kekkakomi8").innerHTML = komi;
       document.getElementById("kekkakomi10").innerHTML = "なし";
+      document.getElementById("kenzankomi").innerHTML = komi;
+      document.getElementById("kenzanzei").innerHTML = zei;
     }else if (par10 == kensa) {
       console.log("10%です");
       document.getElementById("kekkazei8").innerHTML = "なし";
       document.getElementById("kekkazei10").innerHTML = zei;
       document.getElementById("kekkakomi8").innerHTML = "なし";
       document.getElementById("kekkakomi10").innerHTML = komi;
+      document.getElementById("kenzankomi").innerHTML = komi;
+      document.getElementById("kenzanzei").innerHTML = zei;
     } else {
       var komi8 = komi * 5.4 - zei * 59.4;
       var komi10 = komi - komi8;
