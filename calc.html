@@ -24,6 +24,9 @@
     var kensa = zei/komi;
     console.log("komi="+komi);
     console.log("zei="+zei);
+    console.log("kensa="+kensa);
+    console.log("par8="+par8);
+    console.log("par10="+par10);
 
     if (par8 == kensa) {
       console.log("8%です");
@@ -43,13 +46,38 @@
       document.getElementById("kenzanzei").innerHTML = zei;
     } else {
       var komi8 = komi * 5.4 - zei * 59.4;
+      var marumekomi8 = Math.round(komi8);
       var komi10 = komi - komi8;
-      var zei8 = komi8 * par8;
-      var zei10 = komi10 * par10;
+      var marumekomi10 = Math.round(komi10);
+      var zei10 = Math.floor(komi10 * par10);
+      var zei8 = zei - zei10;
+      var nuki8 = marumekomi8 - zei8;
+      var kenzankomi8 = nuki8+zei8;
+      var nuki10 = marumekomi10 - zei10;
+      var kenzankomi10 = nuki10+zei10;
+      var kenzankomi = nuki10+nuki8+zei10+zei8;
+      var kenzanzei = zei10+zei8;
+      console.log("komi8="+komi8);
+      console.log("marumekomi8="+marumekomi8);
+      console.log("marumekomi8-zei8="+nuki8);
+      console.log("zei8="+zei8);
+      console.log("kenzankomi8="+kenzankomi8);
+
+      console.log("komi10="+komi10);
+      console.log("marumekomi10="+marumekomi10);
+      console.log("marumekomi10-zei10="+nuki10);
+      console.log("zei10="+zei10);
+      console.log("kenzankomi10="+kenzankomi10);
+
+      console.log("kenzankomi="+kenzankomi);
+      console.log("kenzanzei="+kenzanzei);
+
       document.getElementById("kekkazei8").innerHTML = Math.round(zei8);
       document.getElementById("kekkazei10").innerHTML = Math.round(zei10);
       document.getElementById("kekkakomi8").innerHTML = Math.round(komi8);
+      document.getElementById("kekkanuki8").innerHTML = Math.round(komi8)-Math.round(zei8);
       document.getElementById("kekkakomi10").innerHTML = Math.round(komi10);
+      document.getElementById("kekkanuki10").innerHTML = Math.round(komi10)-Math.round(zei10);
       
       kenzankomi = Math.round(komi8) + Math.round(komi10);
       kenzanzei = Math.round(zei8) + Math.round(zei10);
@@ -68,11 +96,11 @@
           <table>
             <tr>
               <td>税込み金額 </td>
-              <td><input type="text" id="komi" name="komi" value="" pattern="[0-9]*" ></td>
+              <td><input type="text" id="komi" name="komi" value="10116" pattern="[0-9]*" ></td>
             </tr>
             <tr>
               <td>税</td>
-              <td><input type="text" id="zei" name="zei" value="" pattern="[0-9]*" ></td>
+              <td><input type="text" id="zei" name="zei" value="773" pattern="[0-9]*" ></td>
             </tr>
             <tr>
               <td>　</td>
@@ -95,16 +123,24 @@
               <td align="center" colspan="2" class="bg-info">結果</td>
             </tr>
             <tr>
-              <td>8%対象</td>
+              <td>8%税込</td>
               <td id="kekkakomi8"></td>
+            </tr>
+            <tr>
+              <td>8%税抜</td>
+              <td id="kekkanuki8"></td>
             </tr>
             <tr>
               <td>8%消費税</td>
               <td id="kekkazei8"></td>
             </tr>
             <tr>
-              <td>10%対象</td>
+              <td>10%税込</td>
               <td id="kekkakomi10"></td>
+            </tr>
+            <tr>
+              <td>10%税抜</td>
+              <td id="kekkanuki10"></td>
             </tr>
             <tr>
               <td>10%消費税</td>
