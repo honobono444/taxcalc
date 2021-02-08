@@ -84,6 +84,16 @@
       document.getElementById("kenzankomi").innerHTML = kenzankomi;
       document.getElementById("kenzanzei").innerHTML = kenzanzei;
     }
+
+    // new
+    var kingaku = komi - zei;
+    document.getElementById("kenzankomisotei8").innerHTML = komi;
+    sotei8zei = Math.floor(kingaku * 0.08 * 100) / 100;
+    document.getElementById("kenzanzeisotei8").innerHTML = sotei8zei;
+
+    document.getElementById("kenzankomisotei10").innerHTML = komi;
+    sotei10zei = Math.floor(kingaku * 0.1 * 100) / 100;
+    document.getElementById("kenzanzeisotei10").innerHTML = sotei10zei;
   }
 </script>
     <title>calc</title>
@@ -96,11 +106,11 @@
           <table>
             <tr>
               <td>税込み金額 </td>
-              <td><input type="text" id="komi" name="komi" value="" pattern="[0-9]*" ></td>
+              <td><input type="text" id="komi" name="komi" value="5277" pattern="[0-9]*" ></td>
             </tr>
             <tr>
               <td>税</td>
-              <td><input type="text" id="zei" name="zei" value="" pattern="[0-9]*" ></td>
+              <td><input type="text" id="zei" name="zei" value="390" pattern="[0-9]*" ></td>
             </tr>
             <tr>
               <td>　</td>
@@ -156,6 +166,28 @@
             <tr>
               <td>税</td>
               <td id="kenzanzei"></td>
+            </tr>
+            <tr>
+              <td align="center" colspan="2" class="bg-info">検算(全部8%想定)</td>
+            </tr>
+            <tr>
+              <td width="100">税込み金額</td>
+              <td width="100" id="kenzankomisotei8"></td>
+            </tr>
+            <tr>
+              <td>8%消費税</td>
+              <td id="kenzanzeisotei8"></td>
+            </tr>
+            <tr>
+              <td align="center" colspan="2" class="bg-info">検算(全部10%想定)</td>
+            </tr>
+            <tr>
+              <td width="100">税込み金額</td>
+              <td width="100" id="kenzankomisotei10"></td>
+            </tr>
+            <tr>
+              <td>10%消費税</td>
+              <td id="kenzanzeisotei10"></td>
             </tr>
           </table>
         </div>
